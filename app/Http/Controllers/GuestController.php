@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class GuestController extends Controller
 {
     //
+    public function contactSubmit(Request $request)
+    {
+        return $request->uname;
+    }
     public function index()
     {
       return view('welcome');  

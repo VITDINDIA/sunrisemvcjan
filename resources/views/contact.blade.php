@@ -4,7 +4,8 @@
 <div class="container-wrap">
 		<div id="fh5co-events">
 		<h2>Horizontal form</h2>
-  <form class="form-horizontal" action="/action_page.php">
+  <form class="form-horizontal" method="post" action="{{ route('contact_submit') }}">
+  @csrf
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Name:</label>
       <div class="col-sm-10">

@@ -12,10 +12,11 @@
 */
 
 Route::get('/','GuestController@index')->name('index');
-
 Route::get('ContactUs','GuestController@contact')->name('contact');
+Route::post('ContactUs','GuestController@contactSubmit')->name('contact_submit');
 
 Route::get('GetAllAuthors','GuestController@getAuthors');
+
 
 
 
