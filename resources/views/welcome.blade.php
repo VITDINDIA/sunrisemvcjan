@@ -134,30 +134,15 @@
 				</div>
 			</div>
 			<div class="row">
+            @foreach($data as $getData)
 				<div class="col-md-4 animate-box">
 					<div class="events-entry">
-						<span class="date">March 10, 2017</span>
-						<h3><a href="#">Message From God</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<a href="#">Read More <i class="icon-arrow-right3"></i></a>
+						<span class="date">{{$getData->created_at}}</span>
+						<h3><a href="#">{{$getData->user->name}}</a></h3>
+						<p>{{$getData->quote}}</p>
 					</div>
 				</div>
-				<div class="col-md-4 animate-box">
-					<div class="events-entry">
-						<span class="date">March 20, 2017</span>
-						<h3><a href="#">Message From God</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<a href="#">Read More <i class="icon-arrow-right3"></i></a>
-					</div>
-				</div>
-				<div class="col-md-4 animate-box">
-					<div class="events-entry">
-						<span class="date">March 30, 2017</span>
-						<h3><a href="#">Message From God</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<a href="#">Read More <i class="icon-arrow-right3"></i></a>
-					</div>
-				</div>
+             @endforeach   
 			</div>
 		</div>
 		<div id="fh5co-news" class="fh5co-light-grey">

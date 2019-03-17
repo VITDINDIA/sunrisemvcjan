@@ -16,6 +16,7 @@ class CreateMsgsTable extends Migration
         Schema::create('msgs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('msg');
+            $table->string('contact',10)->nullable();
             $table->integer('user_id')->nullable();
             $table->string('guest_name')->nullable();
             $table->timestamps();

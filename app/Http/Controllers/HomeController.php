@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use App\Category;use App\Quote;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['authtype','auth']);
     }
 
     /**
@@ -24,5 +24,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function postQuote()
+    { 
+        return view('create_quotes',['data' => Category::all(), ]);
+    }
+    public function submitQuote(Request $request)
+    {
+       Quote::create([ 'quote' => $request->quote, 'refauthor' => $request->author,'category_id' => $request->category ,'user_id' =>Auth::user()->id ]);
+        return Redirect()->route('post_quote')->with(['success' => 'Quote Created Successfully', ]);
     }
 }

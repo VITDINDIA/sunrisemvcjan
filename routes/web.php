@@ -18,8 +18,13 @@ Route::post('ContactUs','GuestController@contactSubmit')->name('contact_submit')
 Route::get('GetAllAuthors','GuestController@getAuthors');
 
 
-
-
 Auth::routes();
 
+Route::get('/admin-home', 'AdminController@index')->name('admin_home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/allow-quote/{id}', 'AdminController@allowQuote')->name('allow_quote');
+
+Route::get('/post-quote', 'HomeController@postQuote')->name('post_quote');
+Route::post('/post-quote', 'HomeController@submitQuote')->name('submit_quote');
+
+
