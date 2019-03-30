@@ -33,6 +33,15 @@
     @endforeach
     </tbody>
   </table>
+  <ul class="pager">
+                  @if($data->currentPage() !== 1)
+                    <li><a href="{{ $data->previousPageUrl() }}">Previous</a></li>
+                  @endif
+                  @if($data->currentPage() !== $data->lastPage() && $data->hasPages())
+                    <li><a href="{{ $data->nextPageUrl() }}">Next</a></li>
+                  @endif
+                  </ul>            
+                          
                 </div>
                 <div class="card-footer">
                   <div class="stats">
