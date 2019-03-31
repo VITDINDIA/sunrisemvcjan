@@ -27,4 +27,5 @@ Route::get('/allow-quote/{id}', 'AdminController@allowQuote')->name('allow_quote
 Route::get('/post-quote', 'HomeController@postQuote')->name('post_quote');
 Route::post('/post-quote', 'HomeController@submitQuote')->name('submit_quote');
 
+Route::post('/postphoto', 'HomeController@postphoto')->name('postphoto');
 

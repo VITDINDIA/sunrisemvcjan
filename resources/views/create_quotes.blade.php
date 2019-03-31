@@ -54,11 +54,18 @@
             </div>
             <div class="col-md-4">
               <div class="card card-profile">
+              @if(Auth::user()->photopath)
                 <div class="card-avatar">
                   <a href="#pablo">
-                    <img class="img" src="../assets/img/faces/marc.jpg" />
+                    <img class="img" src="images/authors/{{ Auth::user()->photopath }}" />
                   </a>
                 </div>
+                 @else
+                <form method="post" action="{{ route('postphoto') }}" enctype="multipart/form-data">  
+                  @csrf
+                  <input type="file" name="file" /><br /><input type="submit" />
+                  </form>
+                 @endif 
                 <div class="card-body">
                   <h6 class="card-category text-gray">Author</h6>
                   <h4 class="card-title">{{ Auth::user()->name }}</h4>

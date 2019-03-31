@@ -5,8 +5,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Msg;
 use App\Quote;
-use Mail;
 use Illuminate\Support\Facades\Cache;
+use App\Events\EmailEvent;
 class GuestController extends Controller
 {
     //
@@ -17,12 +17,8 @@ class GuestController extends Controller
         ]);
         
         $data = array('msg'=>$request['query'], $request['contact']);
-    
-        Mail::send('email_contact', $data, function($message) {
-        $message->to('abhinav.cse12@gmail.com')->subject('New Query from Motivational Quote');
-        $message->from('learnforwardglobe@gmail.com');
-        });
-        
+        Session(['data' =>$data, ]);
+        event(new EmailEvent());
         
          Msg::create(['msg' => $request['query'], 'contact' =>  $request['contact'], 
         'guest_name' =>  $request['name'] ]);

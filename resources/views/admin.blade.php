@@ -33,7 +33,7 @@
     @endforeach
     </tbody>
   </table>
-  <ul class="pager">
+            <ul class="pager">
                   @if($data->currentPage() !== 1)
                     <li><a href="{{ $data->previousPageUrl() }}">Previous</a></li>
                   @endif

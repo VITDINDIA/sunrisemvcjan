@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;use App\Quote;
-use Auth;
+use Auth;use App\User;
 class HomeController extends Controller
 {
     /**
@@ -21,6 +21,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function postphoto(Request $request)
+    {
+        $request->validate([
+            'file' => 'max:500',
+                           ]);                  
+        $image=$request->file('file');
+        $input['imagename']=time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('images/authors/');
+        
+        $image->move($destinationPath,$input['imagename']);
+        $getUserRow=User::find(Auth::user()->id);
+        $getUserRow->photopath=$input['imagename'];
+        $getUserRow->save();
+        return redirect()->route('post_quote');  
+    } 
     public function index()
     {
         return view('home');
